@@ -1,0 +1,41 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}登录 - 我的博客{% endblock %}
+
+{% block content %}
+    <div class="login-form" style="max-width: 500px; margin: 0 auto;">
+        <h2 style="margin-bottom: 30px;">🔑 登录账户</h2>
+        
+        {% if form.errors %}
+            <div class="error" style="background: #ffebee; color: #c62828; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
+                用户名或密码不正确，请重试。
+            </div>
+        {% endif %}
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group" style="margin-bottom: 25px;">
+                <label for="username" style="display: block; margin-bottom: 8px; font-weight: bold;">用户名：</label>
+                <input type="text" name="username" id="username" 
+                       style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px;"
+                       placeholder="请输入用户名" required autofocus>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 25px;">
+                <label for="password" style="display: block; margin-bottom: 8px; font-weight: bold;">密码：</label>
+                <input type="password" name="password" id="password" 
+                       style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px;"
+                       placeholder="请输入密码" required>
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%; padding: 12px; font-size: 18px;">
+                🔑 登录
+            </button>
+            
+            <p style="text-align: center; margin-top: 20px; color: #666;">
+                提示：首次使用请先用管理员账号登录（用户名：shuiyuan）
+            </p>
+        </form>
+    </div>
+{% endblock %}

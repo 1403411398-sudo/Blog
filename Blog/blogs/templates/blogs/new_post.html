@@ -1,0 +1,26 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}写新文章 - blog博客{% endblock %}
+
+{% block content %}
+    <h2>✏️ 写新文章</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group" style="margin-bottom: 25px;">
+            <label for="id_title" style="display: block; margin-bottom: 8px; font-weight: bold;">文章标题：</label>
+            {{ form.title }}
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 25px;">
+            <label for="id_text" style="display: block; margin-bottom: 8px; font-weight: bold;">文章内容：</label>
+            {{ form.text }}
+        </div>
+        
+        <div style="display: flex; gap: 15px;">
+            <button type="submit" class="btn">📤 发布文章</button>
+            <a href="{% url 'blogs:home' %}" class="btn btn-secondary">↩️ 返回首页</a>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "blogs/base.html" %}
+
+{% block title %}博客首页{% endblock %}
+
+{% block content %}
+
+<h2>博客文章列表</h2>
+
+{% for post in posts %}
+    <hr>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.text }}</p>
+
+    {% if user == post.owner %}
+        <a href="{% url 'blogs:edit_post' post.id %}">编辑</a>
+    {% endif %}
+
+{% empty %}
+    <p>暂无博客文章。</p>
+{% endfor %}
+
+{% endblock %}
